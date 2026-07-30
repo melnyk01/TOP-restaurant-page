@@ -1,2 +1,4 @@
 import "./style.css";
-console.log('hey there!')
+import { displayPageContent } from "./content.js";
+
+displayPageContent();
