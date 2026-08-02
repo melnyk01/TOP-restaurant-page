@@ -1,17 +1,36 @@
-import { header } from './header.js';
-import { todaysSpecial } from './todays-special.js';
+import { home } from './home.js';
 import { menu } from './menu.js';
+import { about } from './about.js';
 export function displayPageContent() {
 
     const content = document.querySelector('#content');
-    const footer = document.createElement('footer');
 
+    content.appendChild(home());
 
-    content.appendChild(header());
-    content.appendChild(todaysSpecial());
-    content.appendChild(menu());
+    const homeBtn = document.querySelector('#home');
+    const menuBtn = document.querySelector('#menu');
+    const aboutBtn = document.querySelector('#about');
 
-    document.body.appendChild(footer);
+    function clearContent() {
+        while (content.lastChild) {
+            content.removeChild(content.lastChild);
+        }
+    }
 
+    homeBtn.addEventListener('click', () => {
+        clearContent();
+        content.appendChild(home());
+
+    });
+    menuBtn.addEventListener('click', () => {
+        clearContent();
+
+        content.appendChild(menu());
+    });
+    aboutBtn.addEventListener('click', () => {
+        clearContent();
+        content.appendChild(about());
+
+    });
 }
 
